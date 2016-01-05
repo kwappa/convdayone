@@ -4,7 +4,10 @@ convert some data files of diary to [Day One](%q{TODO: Write a longer descriptio
 
 ## Usage
 
-_to be written_
+### Import from [MomentDiary](http://www.utagoe.com/jp/)
+
+- export CSV from your app
+- `bin/import_moment_diary #{PATH/TO/CSV}`
 
 ## License
 
