@@ -1,5 +1,3 @@
-require "convdayone/version"
-
-module Convdayone
-  # Your code goes here...
-end
+require 'convdayone/version'
+require 'convdayone/cli'
+require 'convdayone/moment_diary'
