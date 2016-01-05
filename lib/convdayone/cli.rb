@@ -17,7 +17,7 @@ module Convdayone
           value = options[key]
 
           if key == :date
-            value = value.strftime('%F %T')
+            value = value.utc.strftime('%F %T')
           end
 
           result.push "--#{key.to_s.gsub('_', '-')}='#{value}'"

@@ -8,6 +8,7 @@ module Convdayone
         data_file = DataFile.new(filename)
         data =  data_file.parse
         data.each do |d|
+          puts "#{d[:date].strftime('%F %T')} : #{d[:text][0 .. 60].gsub(/[\r\n]/, '')}"
           Convdayone::CLI.create(d[:text], date: d[:date])
         end
       end
