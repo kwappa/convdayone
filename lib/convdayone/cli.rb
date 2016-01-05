@@ -4,6 +4,7 @@ module Convdayone
   class CLI
     def self.create(content, options = {})
       raise '`dayone-cli` is not found. install from ' unless !`type dayone`.empty?
+      `echo '#{content}' | dayone #{cli_option(options)} new`
     end
 
     def self.cli_option(options)
