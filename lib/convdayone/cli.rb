@@ -4,11 +4,15 @@ module Convdayone
   class CLI
     def self.create(content, options = {})
       raise '`dayone-cli` is not found. install from ' unless !`type dayone`.empty?
-      `echo '#{escape_string(content)}' | dayone #{cli_option(options)} new`
+      IO.popen("dayone #{cli_option(options)} new", "r+") do |io|
+        io.puts(escape_string(content))
+        io.close_write
+        io.read
+      end
     end
 
     def self.escape_string(string)
-      string.gsub(/'/, "'\\\\''")
+      Shellword.escape(string)
     end
 
     def self.cli_option(options)
