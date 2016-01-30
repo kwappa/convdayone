@@ -1,6 +1,6 @@
 # Convdayone
 
-convert some data files of diary to [Day One](%q{TODO: Write a longer description or delete this line.})
+convert some data files of diary to [Day One](http://dayoneapp.com/) app via [dayone-cli](http://dayoneapp.com/tools/cli-man/)
 
 ## Usage
 
@@ -13,7 +13,7 @@ convert some data files of diary to [Day One](%q{TODO: Write a longer descriptio
 
 - `bin/import_moment_diary #{PATH/TO/DATADIR/}`
 - datafile must be named `YYYYMM.txt`
-  - e.g. `2016016.txt`
+  - e.g. `201601.txt`
 - it can parse 2 styles
 
 1. original style
