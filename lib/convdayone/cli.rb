@@ -7,7 +7,7 @@ module Convdayone
     def self.create(content, options = {})
       raise '`dayone-cli` is not found. install from ' unless !`type dayone`.empty?
       IO.popen("dayone #{cli_option(options)} new", "r+") do |io|
-        io.puts(escape_string(content))
+        io.puts(content)
         io.close_write
         io.read
       end

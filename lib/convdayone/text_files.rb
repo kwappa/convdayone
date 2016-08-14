@@ -9,7 +9,11 @@ module Convdayone
         data =  data_file.parse
         data.each do |d|
           puts "#{d[:date].strftime('%F %T')} : #{d[:text][0 .. 60].gsub(/[\r\n]/, '')}"
-          Convdayone::CLI.create(d[:text], date: d[:date])
+          Convdayone::CLI.create(
+            d[:text],
+            date: d[:date],
+            journal_file: "#{ENV['HOME']}/Library/Group Containers/5U8NS4GX82.dayoneapp2/Data/Auto Import/Default Journal.dayone"
+          )
         end
       end
     end
@@ -27,7 +31,9 @@ module Convdayone
       end
 
       def parse
-        lines = File.open(@name, "r:BOM|UTF-8") { |f| f.read }
+        # lines = File.open(@name, "r:BOM|UTF-8") { |f| f.read }
+        lines = File.open(@name, 'r:SHIFT_JIS') { |f| f.read }
+        lines.encode!(Encoding::UTF_8)
 
         lines.each_line do |line|
 
@@ -39,7 +45,9 @@ module Convdayone
             end
 
           when :find_date
-            match = line.match(/(?<m>\d+)\/(?<day>\d+)/)
+            l = line.gsub(/\s/, '').gsub(@year.to_s, '')
+            match = l.match(/(?<m>\d{1,2})[\/\-](?<day>\d{1,2})/)
+
             if match
               @date = Time.local(@year, @month, match[:day].to_i, 23, 59)
               @mode = :reading
@@ -61,7 +69,7 @@ module Convdayone
 
       def buffer_to_result
         unless @buffer.empty?
-          @result.push({date: @date, text: @buffer.join})
+          @result.push({date: @date, text: @buffer.join.encode(Encoding::UTF_8)})
           @buffer = []
         end
       end
