@@ -7,11 +7,11 @@ convert some data files of diary to [Day One](http://dayoneapp.com/) app via [da
 ### Import from [MomentDiary](http://www.utagoe.com/jp/)
 
 - export CSV from your app
-- `bin/import_moment_diary #{PATH/TO/CSV}`
+- `bin/import_momentdiary #{PATH/TO/CSV}`
 
 ### Import from text file
 
-- `bin/import_moment_diary #{PATH/TO/DATADIR/}`
+- `bin/import_textfiles #{PATH/TO/DATADIR/}`
 - datafile must be named `YYYYMM.txt`
   - e.g. `201601.txt`
 - it can parse 2 styles
