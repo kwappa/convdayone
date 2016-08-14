@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module Convdayone
   OPTIONS = [:date, :starred, :photo_path, :journal_file].freeze
 
@@ -12,7 +14,7 @@ module Convdayone
     end
 
     def self.escape_string(string)
-      Shellword.escape(string)
+      Shellwords.escape(string)
     end
 
     def self.cli_option(options)
